@@ -1,6 +1,6 @@
 import React from "react";
 import Counter from "../Counter";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 test("header renders with correct test", () => {
@@ -37,4 +37,18 @@ test("substract button renders with +", () => {
     const substractBtn = getByTestId("substract-btn");
 
     expect(substractBtn.textContent).toBe("-");
+})
+
+
+test("changing value of input works correctly", () => {
+    const {getByTestId} = render(<Counter />);
+    const inputEl = getByTestId("input");
+
+    fireEvent.change(inputEl, {
+        target: {
+            value: "5"
+        }
+    });
+
+    expect(inputEl.value).toBe("5");
 })
