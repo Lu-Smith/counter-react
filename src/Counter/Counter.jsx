@@ -3,15 +3,15 @@ import "./Counter.css";
 
 const Counter = () => {
 
-    const [counterValue, setCounterValue] = useState("0");
+    const [counterValue, setCounterValue] = useState(0);
     const [inputValue, setInputValue] = useState("1");
+
+     const handleAddButton = () => {
+        setCounterValue(parseInt(inputValue) + counterValue);
+    }
 
     const handleSubstractButton = () => {
         setCounterValue(counterValue - inputValue);
-    }
-
-    const handleAddButton = () => {
-        setCounterValue(counterValue + inputValue);
     }
 
 
@@ -24,8 +24,8 @@ const Counter = () => {
           type="number" 
           data-testid="input" 
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}/>
-       <button data-testid="add-btn" onClick={handleAddButton}>+</button>
+          onChange={(e) => setInputValue(parseInt(e.target.value))}/>
+        <button data-testid="add-btn" onClick={handleAddButton}>+</button>
     </div>
   )
 }
