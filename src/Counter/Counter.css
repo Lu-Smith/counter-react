@@ -22,3 +22,11 @@
     font-size: 20px;
 }
 
+.Counter .green {
+    color: green;
+}
+
+.Counter .red {
+    color: red;
+}
+
